@@ -14,6 +14,7 @@ fn main() -> Result<(), &'static str> {
 
     let mut max_calories_carried = 0;
     let mut calories_carried_by_elf = 0;
+    let mut all_calories_carried = Vec::new();
 
     for line in lines {
         if line.is_empty() {
@@ -21,13 +22,19 @@ fn main() -> Result<(), &'static str> {
                 max_calories_carried = calories_carried_by_elf;
             }
 
+            all_calories_carried.push(calories_carried_by_elf);
             calories_carried_by_elf = 0;
         } else {
             calories_carried_by_elf += line.parse::<u64>().unwrap();
         }
     }
 
+    all_calories_carried.push(calories_carried_by_elf);
+    all_calories_carried.sort_unstable();
+    let sum_top_3: u64 = all_calories_carried.iter().rev().take(3).sum();
+
     println!("Result of puzzle 1: {max_calories_carried}");
+    println!("Result of puzzle 2: {sum_top_3}");
 
     Ok(())
 }
