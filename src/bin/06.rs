@@ -25,9 +25,8 @@ fn main() -> Result<(), &'static str> {
 
 fn find_marker_position(s: &str, sequence_size: usize) -> Option<usize> {
     let chars: Vec<_> = s.chars().collect();
-    let iter = chars.windows(sequence_size);
 
-    for (i, sequence) in iter.enumerate() {
+    for (i, sequence) in chars.windows(sequence_size).enumerate() {
         let set: HashSet<_> = sequence.iter().collect();
 
         if set.len() == sequence_size {
