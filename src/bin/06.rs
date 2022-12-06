@@ -16,6 +16,10 @@ fn main() -> Result<(), &'static str> {
         println!("Result of puzzle 1: {result}");
     }
 
+    if let Some(result) = find_marker_position(&input_string, 14) {
+        println!("Result of puzzle 2: {result}");
+    }
+
     Ok(())
 }
 
